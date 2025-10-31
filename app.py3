@@ -4,7 +4,7 @@ import pyscog2
 
 app = Flask(__name__)
 
-DATABASE_URL = os.getenv("DATABASE_URL", " ")
+DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://suedaa:Z3sqO5nsbL1kqW6ijSkzswF4d2nQ21CI@dpg-d427bm3uibrs73cohmug-a.oregon-postgres.render.com/hello_cloud3_db_d6ug ")
 
 HTML = """
 <!doctype html>
