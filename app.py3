@@ -1,10 +1,10 @@
 from flask import Flask, render_template_string, request
 import os
-import pyscog2
+import pyscopg2
 
 app = Flask(__name__)
 
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://suedaa:Z3sqO5nsbL1kqW6ijSkzswF4d2nQ21CI@dpg-d427bm3uibrs73cohmug-a.oregon-postgres.render.com/hello_cloud3_db_d6ug ")
+DATABASE_URL= os.getenv("DATABASE_URL", "postgresql://suedaa:Z3sqO5nsbL1kqW6ijSkzswF4d2nQ21CI@dpg-d427bm3uibrs73cohmug-a.oregon-postgres.render.com/hello_cloud3_db_d6ug ")
 
 HTML = """
 <!doctype html>
@@ -38,7 +38,7 @@ HTML = """
 </html>
 """
 
-def coonect_db ():
+def connect_db ():
     conn = psycopg2.connect(DATABASE_URL)
     return conn
 
@@ -46,7 +46,7 @@ def coonect_db ():
 def index ():
     conn = connect_db()
     cur = conn.cursor()
-    cur.execute("CREATE TABLE IF NOT EXISTS ziyaretciler ( id SERIAL PRIMARY KEY. isim TEXT)")
+    cur.execute("CREATE TABLE IF NOT EXISTS ziyaretciler ( id SERIAL PRIMARY KEY, isim TEXT)")
 
     if request.method == "POST":
        isim = request.form.get("isim")
