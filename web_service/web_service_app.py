@@ -1,14 +1,17 @@
-from flask import Flask, request
-import requests
-
 app = Flask(__name__)
+
+# --- BU ÜÇ SATIRI EKLE ---
+@app.route("/test")
+def test():
+    return "Uygulama Calisiyor!", 200
+# -------------------------
 
 # ÖNEMLİ: Kendi API servis URL'nizi buraya doğru yazdığınızdan emin olun
 API_URL = "https://API-SERVICE-URL.onrender.com/selam"
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    sonuc = ""
+    # ... (kodun geri kalanı aynı kalacak)
 
     if request.method == "POST":
         try:
