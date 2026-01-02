@@ -1,26 +1,25 @@
-from flask import Flask, request  # <-- Bu satır mutlaka en üstte olmalı!
+from flask import Flask, request
 import requests
+import os
 
 app = Flask(__name__)
 
-
-# --- BU ÜÇ SATIRI EKLE ---
+# Test rotası: Uygulamanın ayakta olup olmadığını kontrol etmek için
 @app.route("/test")
 def test():
     return "Uygulama Calisiyor!", 200
-# -------------------------
 
-# ÖNEMLİ: Kendi API servis URL'nizi buraya doğru yazdığınızdan emin olun
+# ÖNEMLİ: Buraya kendi gerçek API URL'ni yazmalısın
 API_URL = "https://API-SERVICE-URL.onrender.com/selam"
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    # ... (kodun geri kalanı aynı kalacak)
+    sonuc = ""  # <-- Kritik hata buradaydı, değişkeni her zaman tanımlamalıyız.
 
     if request.method == "POST":
         try:
-            isim = request.form["isim"]
-            sehir = request.form["sehir"]
+            isim = request.form.get("isim", "")
+            sehir = request.form.get("sehir", "")
 
             r = requests.post(
                 API_URL,
@@ -63,7 +62,5 @@ def index():
 """
 
 if __name__ == "__main__":
-    # Render genellikle PORT çevresel değişkenini kullanır
-    import os
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
