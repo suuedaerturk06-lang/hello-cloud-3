@@ -1,4 +1,8 @@
+from flask import Flask, request  # <-- Bu satır mutlaka en üstte olmalı!
+import requests
+
 app = Flask(__name__)
+
 
 # --- BU ÜÇ SATIRI EKLE ---
 @app.route("/test")
