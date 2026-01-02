@@ -1,3 +1,0 @@
-flask
-gunicorn
-pyscopg2-binary
