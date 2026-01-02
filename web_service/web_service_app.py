@@ -28,16 +28,26 @@ def index():
         except Exception:
             sonuc = "API bağlantı hatası"
 
-    return f"""
+return f"""
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>Mikro Hizmetli Selam</title>
+    <meta charset="UTF-8">
+    <title>Mikro Hizmetli Selam</title>
 </head>
 <body style="font-family:Arial; background:#202020; color:white; text-align:center; padding-top:40px;">
-<h2>🌐 Mikro Hizmetli Selam Servisi</h2>
+    <h2>🌐 Mikro Hizmetli Selam Servisi</h2>
 
-<form method="POST">
-<input type="text" name="isim" placeholder="Adınız" required><br><br>
-<input type="text" name="sehir" placeholder="Şehriniz" required><br><
+    <form method="POST">
+        <input type="text" name="isim" placeholder="Adınız" required><br><br>
+        <input type="text" name="sehir" placeholder="Şehriniz" required><br><br>
+        <button type="submit">Gönder</button>
+    </form>
+
+    <h3 style="color: #00ff00;">{sonuc}</h3>
+</body>
+</html>
+""" # <--- Hatanın sebebi bu tırnakların eksik olmasıydı!
+
+if __name__ == "__main__":
+    app.run(debug=True)
